@@ -1,18 +1,13 @@
 class Key {
-    private signature: number;
-    constructor() {
-        this.signature = Math.random();
-    };
-
+    private signature: number = Math.random();
+    
     getSignature(): number {
         return this.signature;
     } 
 }
 
 class Person {
-    constructor(private key: Key) {
-        this.key = key;
-    }
+    constructor(private key: Key) {}
 
     getKey(): Key {
         return this.key;
@@ -21,11 +16,10 @@ class Person {
 
 abstract class House {
     public door: boolean = false;
-    public key: Key;
     private tenants: Person[] = [];
-    constructor(key: Key) {
-        this.key = key;
-    }
+
+    constructor(public key: Key) {}
+    
     comeIn(person: Person):void {
         if (this.door) {
              this.tenants.push(person);
